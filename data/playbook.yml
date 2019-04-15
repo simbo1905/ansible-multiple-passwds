@@ -24,15 +24,11 @@
       msg: "{{ output.path }}"
 
   - include_tasks: make_encypted_strings.yaml
-    with_items:
-      - sitea
-      - siteb
-      - sitec
-      - sited
+    with_items: "{{static_pass}}"
     loop_control:
       loop_var: 'loop_var'
 
   - name: assemble the fragments into a whole
     assemble:
       src: "{{ output.path }}"
-      dest: /tmp/whole.yml
+      dest: /tmp/all_passwds.yml

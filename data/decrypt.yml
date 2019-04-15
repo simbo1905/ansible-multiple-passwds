@@ -1,0 +1,15 @@
+---
+- name: Create Encrypted password file
+  hosts: all
+  
+  vars_files: 
+    - "/tmp/all_passwds.yml"
+  tasks:
+  
+  - name: print stdout host1
+    debug:
+      msg: "{{ vars['host_one'] }}"
+
+  - name: print stdout host2
+    debug:
+      msg: "{{ vars['host_two'] }}"

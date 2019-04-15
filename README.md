@@ -20,4 +20,6 @@ host_two: password2
 ```
 
 Note that this playbook is designed to run against locahost. You will then need to upload the resultant file 
-from localhost to wherever you can use it e.g., git. 
+`/tmp/all_passwds.yml` localhost to wherever you can use it e.g., git. 
+
+The script `decrypt.sh` tests that the resultant map can be printed out.  
