@@ -1,0 +1,38 @@
+---
+- name: Create Encrypted password file
+  hosts: all
+  become: true
+
+  vars:
+
+    password_hosts:
+    - host_one
+    - host_two
+
+  tasks:
+  
+  - name : Create staging directory
+    tempfile:
+      state: directory
+      suffix: staging
+      path: "/tmp"
+    become: true
+    register: output
+  
+  - name: print stdout
+    debug:
+      msg: "{{ output.path }}"
+
+  - include_tasks: make_encypted_strings.yaml
+    with_items:
+      - sitea
+      - siteb
+      - sitec
+      - sited
+    loop_control:
+      loop_var: 'loop_var'
+
+  - name: assemble the fragments into a whole
+    assemble:
+      src: "{{ output.path }}"
+      dest: /tmp/whole.yml

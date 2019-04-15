@@ -1,0 +1,4 @@
+host_passwords:
+{% for host in password_hosts %}
+  {{ host }}: {{ vars[host] }}  
+{% endfor %}

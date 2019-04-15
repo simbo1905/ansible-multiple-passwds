@@ -1,0 +1,6 @@
+---
+- name: Run ansible-vault on a string
+  command: "ansible-vault --vault-id=/vagrant_data/vault_password encrypt_string 'foooodev' --name {{ loop_var }}"
+  register: value_value
+
+- local_action: copy content="{{ value_value.stdout }}\n" dest={{ output.path }}/{{ loop_var }}
