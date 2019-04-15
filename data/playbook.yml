@@ -1,13 +1,12 @@
 ---
+# This playbook expects to be passed:
+# - static_pass a list of hosts that need passwords
+# - for each host in $static_pass a variable with the same key and the password as the vaLue
+# It is anticipated that the static_pass will be configured as extra vars in a Tower Job Template
+# It is anticipated that the host=password properties will be capture by a Tower Survey
 - name: Create Encrypted password file
   hosts: all
   become: true
-
-  vars:
-
-    password_hosts:
-    - host_one
-    - host_two
 
   tasks:
   
